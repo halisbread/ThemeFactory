@@ -1,7 +1,6 @@
 import log4js from "log4js"
 import process from "node:process";
 
-
 const logConfig = {
     appenders: {
         console: { type: 'console' },

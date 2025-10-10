@@ -40,6 +40,8 @@ export namespace DesktopWhite {
         new WhiteThemeBase("white1", "awesome.tdesktop-theme", "捕获.PNG", "windowSubTextFg"),
         new WhiteThemeBase("white2", "awesome01.tdesktop-theme", "捕获.PNG", "sideBarTextFgActive"),
         new WhiteThemeBase("white3", "awesome.tdesktop-theme", "捕获.PNG", "sideBarTextFgActive"),
+        new WhiteThemeBase("white4", "awesome.tdesktop-theme", "捕获.PNG", "windowBgRipple"),
+
     ];
 
     // 初始化 Map 并设置数据

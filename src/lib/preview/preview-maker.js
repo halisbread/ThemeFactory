@@ -324,17 +324,15 @@ const makePrevAndroid = async (
     template
 ) => {
     let theme, accentHue;
-
     if (themeBuffer instanceof Buffer) {
-        theme = new Attheme(themeBuffer.toString(`binary`));
+        theme = new Attheme(themeBuffer.toString());
     } else {
         theme = themeBuffer;
     }
     for (const [variable, fallbackVariable] of fallbacks) {
-        theme[variable] ??=
-            theme[fallbackVariable] ?? defaultVariablesValues[variable];
+            theme[variable] ??=
+                theme[fallbackVariable] ?? defaultVariablesValues[variable];
     }
-
     const preview = parser.parseFromString(templates[template]);
     const AVATAR_VARIABLES = [
         `avatar_backgroundRed`,

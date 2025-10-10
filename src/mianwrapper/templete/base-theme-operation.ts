@@ -1,3 +1,4 @@
+//@ts-nocheck
 import fs from "fs";
 import {NAttheme as Attheme} from "../../lib/wapper/NAttheme";
 import tinycolor from "tinycolor2";
