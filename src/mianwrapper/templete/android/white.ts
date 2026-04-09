@@ -25,6 +25,8 @@ export namespace AndroidWhite {
             super(id,tP,pP,mainColorSelect,colorType);
         }
 
+        //私有定制
+
         addTaOperation() {
             super.addTaOperation();
             let {r:red,g:green,b:blue}= tinycolor({h:super.toHueColor,s:this.targetS,l:this.targetL}).toRgb()
@@ -52,6 +54,8 @@ export namespace AndroidWhite {
             this.ta.set("chat_outBubble",this.ta.get(this.mainColorSelect))
         }
     }
+
+    //只改变H
     class SpeTheme4 extends WhiteThemeBase{
         private chatFilInfo="chat_outFileInfoText"
         private chatFilNameText="chat_outFileNameText"
@@ -73,17 +77,16 @@ export namespace AndroidWhite {
                 return z >= start || z <= end;
             }
         }
+
         translateHue(toHueColor: number, targetS: number, targetL: number, background: Buffer, alphaT: number = 1): Buffer {
             // 目标hue
             // sideBarBgActive 为主要改变颜色 标准
             // @ts-ignore
             this.init()
             let {h:mainH,s:mainS}=this.mainHSL
-
             let en=this.ta.getVariablesList()
             for (const e of en) {
                 let kp;
-                let po= this.ta.get(e)
                 // @ts-ignore
                 let {red:r,green:g,blue:b,alpha:a} = this.ta.get(e)
                 kp=  tinycolor({ r,g,b,a}).toHsl()
@@ -120,6 +123,9 @@ export namespace AndroidWhite {
         new SpeTheme3("white3", "Day.attheme", "捕获.PNG", "actionBarTabLine"),
         new SpeTheme3("white4", "@Gumiho_tem1.attheme", "捕获.PNG", "actionBarDefault"),
         new SpeTheme4("white5", "Chestnut Chiffon.attheme", "捕获.PNG", "actionBarTabLine",ThemeType.SimpleDifference),
+        new SpeTheme2("white6", "Black Jubilee.attheme", "捕获.PNG", "actionBarDefault"),
+        new SpeTheme4("white7", "@TheAnime_Stream 0146.attheme", "捕获.PNG", "actionBarDefaultIcon"),
+
         // new WhiteThemeBase("white4", "Ghost.attheme", "捕获.PNG", "actionBarTabLine")
     ];
 
