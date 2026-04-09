@@ -1,0 +1,111 @@
+name=Dream Neon Girl
+
+# ==== 基础背景 ====
+windowBackgroundWhite=#1A1B2F
+windowBackgroundGray=#23244A
+windowBackgroundGrayShadow=#000000
+
+# ==== ActionBar ====
+actionBarDefault=#23244A
+actionBarDefaultTitle=#FFFFFF
+actionBarDefaultIcon=#FFFFFF
+actionBarDefaultSelector=#2C2E5A
+
+
+# ==== 聊天气泡 ====
+chat_outBubble=#6C63FF
+chat_outBubbleSelected=#5A52E0
+chat_outBubbleText=#FFFFFF
+
+chat_inBubble=#2C2E5A
+chat_inBubbleSelected=#383A70
+chat_inBubbleText=#EAEAFF
+
+# ==== 时间 / 状态 ====
+chat_outTimeText=#DCDCFB
+chat_inTimeText=#AEB0D6
+
+# ==== 输入框 ====
+chat_messagePanelBackground=#2A2C55
+chat_messagePanelHint=#8A8BB5
+chat_messagePanelText=#FFFFFF
+
+# ==== 按钮 ====
+chat_messagePanelSend=#5FD1C5
+chat_messagePanelIcons=#A78BFA
+
+# ==== 链接 ====
+chat_messageLinkOut=#A78BFA
+chat_messageLinkIn=#5FD1C5
+
+# ==== 列表 ====
+listSelectorSDK21=#2C2E5A
+listSelector=#2C2E5A
+
+# ==== 对话列表 ====
+chats_unreadCounter=#6C63FF
+chats_unreadCounterText=#FFFFFF
+chats_name=#FFFFFF
+chats_message=#B8B9D9
+chats_date=#8A8BB5
+
+# ==== 分割线 ====
+divider=#2C2E5A
+
+# ==== 设置页 ====
+windowBackgroundWhiteBlackText=#FFFFFF
+windowBackgroundWhiteGrayText=#B8B9D9
+windowBackgroundWhiteBlueText=#6C63FF
+
+# ==== 开关 ====
+switchTrack=#3A3C70
+switchTrackChecked=#5FD1C5
+switchThumb=#FFFFFF
+switchThumbChecked=#FFFFFF
+
+# ==== 复选框 ====
+checkboxSquareBackground=#3A3C70
+checkboxSquareCheck=#5FD1C5
+
+# ==== 滚动条 ====
+fastScrollActive=#6C63FF
+fastScrollInactive=#3A3C70
+
+# ==== Toast ====
+toastBackground=#2C2E5A
+toastText=#FFFFFF
+
+# ==== 弹窗 ====
+dialogBackground=#23244A
+dialogTextBlack=#FFFFFF
+dialogTextGray=#B8B9D9
+dialogButton=#6C63FF
+
+# ==== 进度条 ====
+progressCircle=#5FD1C5
+
+# ==== 附件面板 ====
+chat_attachPanelBackground=#23244A
+chat_attachPanelIcon=#A78BFA
+
+# ==== 音频 ====
+chat_inAudioProgress=#5FD1C5
+chat_outAudioProgress=#FFFFFF
+
+# ==== 文件 ====
+chat_inFileProgress=#5FD1C5
+chat_outFileProgress=#FFFFFF
+
+# ==== 气泡阴影（增强质感）====
+chat_inBubbleShadow=#000000
+chat_outBubbleShadow=#000000
+
+# ==== 高级点缀 ====
+chat_emojiPanelBackground=#23244A
+chat_emojiPanelIcon=#A78BFA
+
+# ==== 光标 ====
+chat_messagePanelCursor=#5FD1C5
+
+# ==== 选中高亮 ====
+chat_selectedBackground=#2C2E5A
