@@ -10,5 +10,4 @@ node_modules/
 /test/**
 /log/app.log
 config.ts
-test.ts
 /public/myserver-bot-public/
