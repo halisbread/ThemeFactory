@@ -80,7 +80,7 @@ result.forEach((x,y)=>{
         theme.set(x.x, {red:color.r,green:color.g,blue:color.b,alpha:color.a*255})
     }
 })
-theme.setWallpaper(fs.readFileSync("Ai/photo_2024-10-13_09-42-24.jpg"))
+theme.setWallpaper(fs.readFileSync("Ai/b65a84f78764344be2b37877df7281c6.jpg"))
 fs.writeFileSync("Ai.attheme", theme.toFile())
 /* 输出:
 [
