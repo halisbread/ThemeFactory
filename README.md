@@ -1,168 +1,57 @@
-# 本项目是主题创建程序的后端,需要结合[ThemeWeb](https://github.com/yusifmorley/ThemeWeb)（前端网页界面）使用
 
+这是一个基于 Node.js 的 Telegram 主题处理工具。它可以读取文本格式的主题，将其转换为标准的 Telegram 主题格式 (`.attheme`)，并支持自动嵌入背景图片。
 
-## 配置
+## 🚀 功能特性
 
+* **智能解析**：支持解析 `key=#AARRGGBB` 格式的颜色定义。
+* **格式转换**：自动将 Telegram 特有的 **ARGB** 顺序转换为标准的 **RGBA** 逻辑进行处理。
+* **背景合成**：支持直接读取本地图片并将其设置为主题的 `chat_wallpaper`。
+* **十六进制处理**：兼容有符号整型颜色值与标准十六进制字符串。
 
-### 在根目录库下创建配置config.ts 文件
-```typescript
-interface BotConfig {
-    botApi:string
-}
-interface DBConfig {
-    username:string
-    password:string
-}
+## 🛠️ 安装
 
-let devObject:BotConfig={
-    botApi:""
-}
-let proObject:BotConfig={
-    botApi: ""
-}
+在开始之前，请确保你的项目中已安装以下依赖：
 
-let dbConfig:DBConfig={
-    username:"",
-    password:"",
-}
-export let dbConfigPro:DBConfig={
-    username:"",
-    password:"",
-}
-export {devObject, proObject,dbConfig,DBConfig}
-```
-## 数据库模型
-项目中定义了两个主要的数据库模型，用于存储主题切换记录和编辑日志：
-
-1. **`jump_to_theme`**:
-    - **字段**：
-        - `type`: 主题类型（0 表示 Android，1 表示桌面）。
-        - `theme_name`: 主题名称。
-        - `date`: 切换时间。
-
-2. **`theme_editor_log`**:
-    - **字段**：
-        - `kind`: 日志种类。
-        - `ip`: 用户 IP 地址。
-        - `date`: 操作时间。
-
-### sequelize配置
-```typescript
-import { initModels } from './db/models/init-models';
-import { Sequelize } from 'sequelize';
-
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'mysql',
-});
-
-initModels(sequelize);
-sequelize.sync();
+```bash
+npm install tinycolor2
+# 确保你的项目根目录下有 ./src/lib/wapper/NAttheme 路径下的核心类库
 ```
 
-### 启动服务
+## 📂 项目结构
 
-服务启动后，将同时运行 HTTP API 和 Telegram Bot。相关初始化逻辑位于 `server.ts` 文件中：
+Ai功能使用以下目录结构：
 
-```typescript
-import { initBot } from "./src/bot/bot";
-import { initHttp } from "./src/express/http-config";
-
-// 启动 HTTP 服务
-initHttp();
-
-// 启动 Telegram Bot
-initBot();
+```text
+.
+├── Ai/
+│   ├── AiText.txt          # 存放原始颜色配置 (如 windowBackgroundWhite=#ff120a2a)
+│   └── background.jpg      # 主题背景图片
+├── public/
+│   └── deault/
+│       └── Day.attheme     # 基础模板主题
+├── src/
+│   └── lib/wapper/
+│       └── NAttheme.js     # 核心主题处理类
+└── Ai_main.ts                # 你的主逻辑代码(自行修改)
 ```
 
-### Telegram Bot 示例
-用户可以通过发送 `/start` 命令并附带参数来发送主题。例如：
+## 📖 使用说明
 
-- `/start ${themeNameA}`：切换到名为 `themeName` 的 Android 主题。
-- `/start ${themeNameD}`：切换到名为 `themeName` 的桌面主题。
+### 1\. 配置颜色文件 (`AiText.txt`) 由AI生成，把Ai生成的attheme字段放到 Ai/AiText.txt
 
----
+在文件中按行写入颜色配置：
 
-# HTTP API 文档
-
-本项目提供了一组 RESTful API 接口，用于管理 Telegram 主题（`.attheme` 文件）、生成预览、编辑模板以及记录日志。以下是详细的 HTTP API 说明。
-
-## 基础信息
-
-- **服务器地址**: `http://<your-server-ip>:3000`
-- **跨域支持**: 允许所有来源 (`*`)
-- **静态文件目录**:
-    - `/public/tempelete/tohuemodle`（存储模板文件）
-      - 每 一个模板文件都对应一个ts文件
-
-    - `/public/myserver-bot-public/attheme`
-    - `/public/myserver-bot-public/desk`
----
-
-## API 列表
-
-### 1. 获取 Android 主题列表
-- **URL**: `/attheme`
-- **Method**: `GET`
-- **Description**: 返回当前可用的 Android 主题列表。
----
-
-### 2. 获取桌面主题列表
-- **URL**: `/desk`
-- **Method**: `GET`
-- **Description**: 返回当前可用的桌面主题列表。
-
----
-
-### 4. 创建颜色图片
-- **URL**: `/colorlist`
-- **Method**: `POST`
-- **Description**: 根据请求数据生成颜色图片。
-
-### 5. 创建不透明 Android 主题
-- **URL**: `/attheme-create`
-- **Method**: `POST`
-- **Description**: 根据请求数据生成不透明的 Android 主题文件。
-- **Request Body**:
----
-
-### 6. 创建透明 Android 主题
-- **URL**: `/attheme-create/tran`
-- **Method**: `POST`
-- **Description**: 根据请求数据生成透明的 Android 主题文件。
-- **Request Body**:
-
----
-
-### 7. 创建桌面主题
-- **URL**: `/tdesktop-create`
-- **Method**: `POST`
-- **Description**: 根据请求数据生成桌面主题文件。
-- **Request Body**:
-
----
-
-### 8. 获取模板信息
-- **URL**: `/templete-info`
-- **Method**: `GET`
-- **Description**: 返回当前支持的模板信息。
-- **Response**:
-
----
-
-### 9. 模板编辑器
-- **URL**: `/templete-editor/`
-- **Method**: `POST`
-- **Description**: 根据请求数据应用模板并生成新的主题文件。
-- **Request Body**:
-```]
-{
-    "kind": "android", // 或 "desktop"
-    "type": "black",   // 或 "white"
-    "model": "default",
-    "hue": 200,
-    "sat": 50,
-    "lig": 75,
-    "alpha": 0.8
-  }
+```text
+windowBackgroundWhite=#ff120a2a
+actionBarDefault=#ff1f0f3d
+chat_inBubble=#ffffffff
 ```
+
+### 2\. 运行转换
+
+核心逻辑会读取 `Day.attheme` 作为基板，遍历 `AiText.txt` 中的每一行，通过 `tinycolor2` 处理透明度后，更新主题色块，最后输出为 `Ai.attheme`,放在根目录
+
+### 3\. 代码逻辑解析
+
+* **ARGB 转换**：代码通过 `hexValue.slice(0, 2)` 提取 Alpha 通道，并将其移动至末尾，以符合 `tinycolor` 的处理逻辑。
+* **位运算技巧**：注释中提到了 `intColor >>> 0`，这是处理 Telegram 导出的负数整型颜色的高效方案。
